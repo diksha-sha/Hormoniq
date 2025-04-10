@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood, Sleep & Skin Tracker | Hormoniq</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f9;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      background: #ffe1ed;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #e91e63;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .selectors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .selectors select {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    .tracker-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: #c2185b;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #aaa;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mood, Sleep & Skin Tracker</h1>
+    <p>Connect the dots between your hormones, emotions, rest, and glow-up 🌸</p>
+  </header>
+
+  <main>
+    <div class="selectors">
+      <div>
+        <label for="mood">Mood:</label><br>
+        <select id="mood">
+          <option value="tired">Tired</option>
+          <option value="anxious">Anxious</option>
+          <option value="energized">Energized</option>
+          <option value="irritable">Irritable</option>
+        </select>
+      </div>
+      <div>
+        <label for="pcos">PCOS Type:</label><br>
+        <select id="pcos">
+          <option value="insulin">Insulin-Resistant</option>
+          <option value="inflammatory">Inflammatory</option>
+          <option value="adrenal">Adrenal</option>
+          <option value="postPill">Post-Pill</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="tracker-cards">
+      <div class="card">
+        <h3>💖 Mood Insight</h3>
+        <p id="moodInsight">Select how you're feeling to get started.</p>
+      </div>
+      <div class="card">
+        <h3>😴 Sleep Tip</h3>
+        <p id="sleepInsight">Your sleep quality is often tied to your hormones.</p>
+      </div>
+      <div class="card">
+        <h3>✨ Skin Tracker</h3>
+        <p id="skinInsight">Hormonal shifts can cause glow-ups or flare-ups.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Hormoniq – Your PCOS Wellness Buddy 💗
+  </footer>
+
+  <script>
+    const moodData = {
+      tired: {
+        insulin: ["Low energy is common. Add magnesium-rich snacks like almonds."],
+        inflammatory: ["Try turmeric tea and prioritize 7-8 hours of rest."],
+        adrenal: ["Adrenal fatigue may worsen — go for grounding yoga."],
+        postPill: ["Take naps if needed, and eat iron-rich leafy greens."]
+      },
+      anxious: {
+        insulin: ["Blood sugar dips can increase anxiety. Snack smart with protein."],
+        inflammatory: ["Omega-3s help — try chia or walnuts."],
+        adrenal: ["Ashwagandha or calming teas can support your nervous system."],
+        postPill: ["Slow walks + herbal teas like chamomile can help soothe."]
+      },
+      energized: {
+        insulin: ["Great! Channel that into light cardio and stable carbs."],
+        inflammatory: ["Smoothies with anti-inflammatory fruits boost your vibe."],
+        adrenal: ["Balance is key — avoid overdoing workouts."],
+        postPill: ["Get creative with healthy meals and hydration."]
+      },
+      irritable: {
+        insulin: ["Mood swings may stem from insulin dips — steady meals help."],
+        inflammatory: ["Avoid trigger foods. Add zinc and hydration."],
+        adrenal: ["Practice deep breathing or breathwork today."],
+        postPill: ["Hormone shifts post-pill can cause this — ride it out gently."]
+      }
+    };
+
+    const sleepData = {
+      tired: "Aim for a consistent bedtime and avoid screens before sleep.",
+      anxious: "Try journaling or meditation before bed.",
+      energized: "Wind down with lavender oil or soft music.",
+      irritable: "A warm bath or stretching can calm the system for rest."
+    };
+
+    const skinData = {
+      tired: "Skin may look dull. Hydrate and sleep well tonight.",
+      anxious: "Stress can show up as breakouts — keep skincare gentle.",
+      energized: "Glow on! Add sunscreen and keep your routine simple.",
+      irritable: "Redness or oiliness? Try a clay mask and stay cool."
+    };
+
+    const moodEl = document.getElementById('mood');
+    const pcosEl = document.getElementById('pcos');
+
+    function updateInsights() {
+      const mood = moodEl.value;
+      const pcos = pcosEl.value;
+
+      document.getElementById("moodInsight").innerText = moodData[mood][pcos][0];
+      document.getElementById("sleepInsight").innerText = sleepData[mood];
+      document.getElementById("skinInsight").innerText = skinData[mood];
+    }
+
+    moodEl.addEventListener("change", updateInsights);
+    pcosEl.addEventListener("change", updateInsights);
+  </script>
+
+</body>
+</html>

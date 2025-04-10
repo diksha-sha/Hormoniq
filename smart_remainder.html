@@ -1,0 +1,58 @@
+<section id="smart-reminders" class="section">
+    <h2>Smart Reminders</h2>
+    <p>Track your cycle, ovulation, and more with a personalized calendar</p>
+    <button onclick="toggleCalendar()">Open Calendar</button>
+    
+    <div id="calendarBox">
+      <div id="calendar"></div>
+      
+      <div id="event-type-modal" style="display:none; padding: 1rem; text-align:center;">
+        <label for="event-type">Select Event Type:</label>
+        <select id="event-type">
+          <option value="period">Period</option>
+          <option value="ovulation">Ovulation</option>
+        </select>
+        <button onclick="submitEventType()">Confirm</button>
+      </div>
+    </div>
+  </section>
+
+<style>
+    #calendarBox {
+  display: none;
+  margin-top: 2rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#calendar {
+  max-width: 100%;
+}
+
+#event-type-modal select, 
+#event-type-modal button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+#event-type-modal button {
+  background-color: #d14b8f;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#event-type-modal button:hover {
+  background-color: #b03a72;
+}
+</style>
+

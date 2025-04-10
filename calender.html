@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Reminder Calendar | Hormoniq</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css">
+  <link rel="stylesheet" href="calender.css">
+</head>
+<body>
+  <header>
+    <h1>Hormoniq Smart Reminder</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="#calendar">Calendar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="calendar-container">
+      <div id="calendar"></div>
+
+      <div id="event-modal" class="modal">
+        <div class="modal-content">
+          <h3>Select Event Type</h3>
+          <select id="event-type">
+            <option value="period">Period</option>
+            <option value="ovulation">Ovulation</option>
+          </select>
+          <button id="confirm-btn">Confirm</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="calendar.js"></script>
+</body>
+</html>
